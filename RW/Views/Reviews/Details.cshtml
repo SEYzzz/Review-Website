@@ -1,0 +1,54 @@
+﻿@model Review
+
+@{
+    ViewData["Title"] = "Review details";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Details of review</h1>
+        </p>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width: 150px; min-height: 150px" id="ProfilePicturePreview" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Movie" class="control-label"></label>
+                    <input asp-for="Movie" class="form-control" readonly />
+                    <span asp-validation-for="Movie" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Text" class="control-label"></label>
+                    <textarea type="text" name="review_text" asp-for="Text" class="form-control" readonly >
+                    </textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="date" class="control-label"></label>
+                    <input asp-for="date" class="form-control" readonly />
+                    <span asp-validation-for="date" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById("ProfilePicturePreview");
+            output.src = $("#ProfilePictureURL").val();
+        })
+    </script>
+}
+
+

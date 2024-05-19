@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Review_Website.Models
 {
@@ -12,7 +13,8 @@ namespace Review_Website.Models
 
         public string? Text { get; set; }
 
-        public User User { get; set; }
+        public IdentityUser? User { get; set; }
 
+        public DateTime date { get; set; }
     }
 }

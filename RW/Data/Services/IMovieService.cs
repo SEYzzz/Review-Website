@@ -14,5 +14,6 @@ namespace Review_Website.Data.Services
 
         Task DeleteAsync(int id);
 
+        IEnumerable<Movie> GetBySearchString(string searchString);
     }
 }

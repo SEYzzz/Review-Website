@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IReviewsService, ReviewsService>();
 
 
 // Add services to the container.
@@ -38,12 +39,22 @@ else
     app.UseHsts();
 }
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(1800);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
@@ -84,5 +95,6 @@ using (var scope = app.Services.CreateScope())
     }
 
 }
+AppDbInitializer.Seed(app);
 
 app.Run();

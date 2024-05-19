@@ -44,5 +44,19 @@ namespace Review_Website.Data.Services
             await context.SaveChangesAsync();
             return newMovie;
         }
+
+        IEnumerable<Movie> IMovieService.GetBySearchString(string searchString)
+        {
+            var movies = from m in context.Movies
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.ToLower()!.Contains(searchString.ToLower()));
+            }
+            movies.ToList();
+
+            return movies;
+        }
     }
 }

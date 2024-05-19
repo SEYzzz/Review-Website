@@ -95,5 +95,15 @@ namespace Review_Website.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        [HttpPost]
+        public ActionResult Filter(string searchString)
+        {
+            var allMovies =  service.GetBySearchString(searchString);
+
+            if (allMovies == null) return View("NotFound");
+            return View(allMovies);
+        }
     }
 }

@@ -120,17 +120,17 @@ namespace Review_Website.Data
                     });
                     context.SaveChanges();
                 }
-                //if (!context.Reviews.Any())
-                //{
-                //    context.Reviews.AddRange(new List<Review>()
-                //    {
-                //        new Review()
-                //        {
-                //            MovieId = 1,
-                //            Text = "Ну крутяк вообще"
-                //        }
-                //    });
-                //}
+                if (!context.Reviews.Any())
+                {
+                    context.Reviews.AddRange(new List<Review>()
+                    {
+                        new Review()
+                        {
+                            MovieId = 1,
+                            Text = "Ну крутяк вообще"
+                        }
+                    });
+                }
 
             }
         }

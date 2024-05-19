@@ -9,7 +9,6 @@ namespace Review_Website.Data
     public class AppDbContext: IdentityDbContext<IdentityUser>
     {
 
-        public DbSet<User> Users { get; set; } = null!;
         public DbSet<Actor> Actors { get; set; } = null!;
         public DbSet<Movie> Movies { get; set; } = null!;
         public DbSet<Producer> Producers { get; set; } = null!;
